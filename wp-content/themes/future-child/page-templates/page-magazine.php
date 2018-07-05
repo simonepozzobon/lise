@@ -85,6 +85,11 @@ get_header(); ?>
         </div>
     </div>
     <div class="row post-loop">
+        <div class="col-12 w-100">
+            <div class="big-title">
+                <h1>Il Magazine</h1>
+            </div>
+        </div>
         <?php if ( $query->have_posts() ) : ?>
 
             <?php while ( $query->have_posts() ) : $query->the_post(); ?>
