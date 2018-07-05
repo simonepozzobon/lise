@@ -19,6 +19,7 @@ $args = array(
 	'suppress_filters' => true
 );
 $recent_posts = wp_get_recent_posts( $args, ARRAY_A );
+$recent_ids = array();
 
 $posts_args = array(
     'post_type' => 'post',
@@ -40,36 +41,46 @@ get_header(); ?>
         </div>
         <div class="col-12">
             <div class="row">
-                <?php if (count($recent_posts) > 1) {
-                    foreach ($recent_posts as $recent) {
-                        ?>
-                        <div class="col-md-6 feat-post">
-                            <div class="row feat-header">
-                                <div class="col-md-4 avatar-wrapper">
-                                    <?php $author_id = get_post_field( 'post_author', $recent['ID'] ); ?>
-                                    <div class="avatar-container">
-                                        <img src="<?php echo esc_url( get_avatar_url( $author_id ) ); ?>" alt="<?php echo get_the_author_meta( 'display_name' , $author_id ); ?>">
+                <?php
+                    if (count($recent_posts) > 1) {
+                        foreach ($recent_posts as $recent) {
+                            array_push($recent_ids, $recent['ID']);
+                ?>
+                            <div class="col-md-6 feat-post">
+                                <div class="row feat-header">
+                                    <div class="col-md-4 avatar-wrapper">
+                                        <?php $author_id = get_post_field( 'post_author', $recent['ID'] ); ?>
+                                        <div class="avatar-container">
+                                            <img src="<?php echo esc_url( get_avatar_url( $author_id ) ); ?>" alt="<?php echo get_the_author_meta( 'display_name' , $author_id ); ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h1 class="feat-title"><?php echo $recent['post_title']; ?></h1>
+                                        <h5 class="author-name">di <span><?php echo get_the_author_meta( 'display_name' , $author_id ); ?></span></h5>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <h1 class="feat-title"><?php echo $recent['post_title']; ?></h1>
-                                    <h5 class="author-name">di <span><?php echo get_the_author_meta( 'display_name' , $author_id ); ?></span></h5>
+                                <div class="row">
+                                    <div class="col-12 feat-date">
+                                        <?php echo the_time('j F Y'); ?>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="<?php echo get_permalink( $recent['ID'] ); ?>" class="feat-subtitle"><h3><?php echo get_post_meta( $recent['ID'], 'wps_subtitle', true ); ?></h3></a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12 feat-date">
-                                    <?php echo date( 'j F Y', strtotime( $recent['post_date'] ) ); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <a href="#" class="feat-subtitle"><h3><?php echo get_post_meta( $recent['ID'], 'wps_subtitle', true ); ?></h3></a>
-                                </div>
-                            </div>
-                        </div>
-
-                <?php    }
-                } ?>
+                <?php
+                        }
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="row link-description-page">
+        <div class="col">
+            <div class="link">
+                <a href="/cose-lise-magazine">Cos'è LISE Magazine ?</a>
             </div>
         </div>
     </div>
@@ -78,41 +89,46 @@ get_header(); ?>
 
             <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-                <div class="col-md-6">
-                    <div class="post">
-                        <div class="row">
-                            <div class="col post-title">
-                                <a href="#"><h1><?php the_title(); ?></h1></a>
+                <?php
+                    $id = get_the_ID();
+                    if (!in_array($id, $recent_ids)) :
+                ?>
+                    <div class="col-md-6">
+                        <div class="post">
+                            <div class="row">
+                                <div class="col post-title">
+                                    <a href="<?php the_permalink() ?>" rel="bookmark" title="Link permanente a <?php the_title_attribute(); ?>"><h1><?php the_title(); ?></h1></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col post-subtitle">
-                                <h3><?php the_subtitle(); ?></h3>
+                            <div class="row">
+                                <div class="col post-subtitle">
+                                    <h3><?php the_subtitle(); ?></h3>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col post-author">
-                                di <span><?php echo get_the_author_meta( 'display_name' ); ?></span>
+                            <div class="row">
+                                <div class="col post-author">
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col post-date">
-                                <?php the_time('j F Y') ?>
+                            <div class="row">
+                                <div class="col post-info">
+                                    <div class="post-author">di <span><?php echo get_the_author_meta( 'display_name' ); ?></span></div>
+                                    <div class="post-date"><?php the_time('j F Y') ?></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col post-cat">
-                                <?php the_category(', '); ?>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col post-excerpt">
-                                <?php the_excerpt(); ?>
+                            <!-- <div class="row">
+                                <div class="col post-cat">
+                                    <?php the_category(', '); ?>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col post-excerpt">
+                                    <?php the_excerpt(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                <?php endif; ?>
             <?php endwhile; ?>
 
         <?php else : ?>

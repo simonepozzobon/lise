@@ -166,9 +166,49 @@ a:visited:hover {
   color: #999;
 }
 
-.post-loop {
+.link-description-page {
   padding-top: 10rem;
   padding-bottom: 10rem;
+  background-color: #C2182C;
+}
+
+.link-description-page > .col {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.link-description-page > .col > .link > a,
+.link-description-page > .col > .link a:active,
+.link-description-page > .col > .link a:link,
+.link-description-page > .col > .link a:visited {
+  color: #fff;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  -webkit-transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.link-description-page > .col > .link > a:hover,
+.link-description-page > .col > .link a:active:hover,
+.link-description-page > .col > .link a:link:hover,
+.link-description-page > .col > .link a:visited:hover {
+  color: #f3f3f3;
+  -webkit-transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.post-loop {
+  padding-top: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 10rem;
+  background-color: #f3f3f3;
 }
 
 .post {
@@ -184,11 +224,25 @@ a:visited:hover {
 }
 
 .post .post-title > a > h1 {
+  font-weight: bold;
   text-transform: uppercase;
 }
 
 .post .post-subtitle > h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
   line-height: 1.5;
+}
+
+.post .post-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
 }
 
 .post .post-author {
@@ -203,11 +257,8 @@ a:visited:hover {
 }
 
 .post .post-date {
-  padding-top: 2rem;
   color: #999;
-  width: 100%;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #f3f3f3;
 }
 
 .post .post-cat {
@@ -219,6 +270,10 @@ a:visited:hover {
 }
 
 .post .post-excerpt > p {
-  line-height: 1.5;
+  line-height: 1.618;
+}
+
+.post .post-excerpt > p > .entry-more-link-wrapper {
+  display: none;
 }
 
