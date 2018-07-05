@@ -28,9 +28,9 @@
         <?php get_template_part( 'header', 'custom' ); ?>
       </div>
 
-      <div class="navbar-custom-btn">
-        <a href="#" class="btn btn-custom">Magazine</a>
-      </div>
+      <!-- <div class="navbar-custom-btn">
+        <a href="/magazine" class="btn btn-custom">Lise Magazine</a>
+      </div> -->
       <?php future_primary_menu(); ?>
 
     </div>

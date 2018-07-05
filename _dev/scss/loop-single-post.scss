@@ -1,0 +1,61 @@
+.post-loop {
+    padding-top: $spacer * 10;
+    padding-bottom: $spacer * 10;
+}
+
+
+.post {
+    padding: $spacer * 2;
+    padding-bottom: $spacer * 5;
+
+    .post-title {
+        > a {
+
+            :hover {
+                color: $black;
+                text-decoration: underline;
+                transition: $easing;
+            }
+
+            > h1 {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .post-subtitle {
+        > h3 {
+            line-height: $line-height;
+        }
+    }
+
+    .post-author {
+        color: $gray-300;
+        font-style: italic;
+
+        > span {
+            font-style: normal;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+    }
+
+    .post-date {
+        padding-top: $spacer * 2;
+        color: $gray-200;
+        width: 100%;
+        padding-bottom: $spacer;
+        border-bottom: 1px solid $light;
+    }
+
+    .post-cat {
+        padding-top: $spacer;
+    }
+
+    .post-excerpt {
+        padding-top: $spacer;
+        > p {
+            line-height: $line-height;
+        }
+    }
+}

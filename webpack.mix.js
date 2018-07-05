@@ -12,7 +12,7 @@ let webpack = require('webpack')
  */
 
 mix
-    .sass('_dev/scss/style.scss', 'wp-content/themes/future-child/custom.css')
+    .sass('_dev/scss/style.scss', 'wp-content/themes/future-child/css/custom.css')
     .browserSync({
         proxy: 'http://liseroma.test',
         browser: 'google chrome',

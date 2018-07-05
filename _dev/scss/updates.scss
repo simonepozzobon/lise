@@ -1,0 +1,40 @@
+.row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-light {
+    background-color: $light;
+}
+
+.jumbo {
+    padding: $spacer * 5;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+a, a:active, a:link, a:visited {
+    color: $red;
+    text-decoration: none;
+    transition: $easing;
+
+    &:hover {
+        color: $red-dark;
+        text-decoration: underline;
+        transition: $easing;
+    }
+}
