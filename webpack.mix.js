@@ -26,6 +26,7 @@ mix
             alias: {
                 // 'styles': path.resolve(__dirname, 'resources/assets/sass'),
                 '~js': path.resolve(__dirname, 'resources/assets/js'),
+                '~node_modules': path.resolve(__dirname, 'node_modules'),
             }
         },
         plugins: [
