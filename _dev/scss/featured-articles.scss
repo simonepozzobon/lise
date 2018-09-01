@@ -17,6 +17,19 @@
 
     .feat-title {
         text-transform: uppercase;
+
+        a {
+            :hover {
+                color: $black;
+                text-decoration: underline;
+                transition: $easing;
+            }
+
+            h1 {
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
     }
 
     .feat-subtitle {

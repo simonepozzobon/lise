@@ -3,10 +3,12 @@
 @import 'navbar-btn';
 @import 'featured-articles';
 @import 'loop-single-post';
+@import 'single-post';
 
-
-
-
+p {
+  font-size: 16px !important;
+  line-height: 1.618;
+}
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {

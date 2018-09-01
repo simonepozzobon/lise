@@ -48,15 +48,11 @@ get_header(); ?>
                 ?>
                             <div class="col-md-6 feat-post">
                                 <div class="row feat-header">
-                                    <div class="col-md-4 avatar-wrapper">
-                                        <?php $author_id = get_post_field( 'post_author', $recent['ID'] ); ?>
-                                        <div class="avatar-container">
-                                            <img src="<?php echo esc_url( get_avatar_url( $author_id ) ); ?>" alt="<?php echo get_the_author_meta( 'display_name' , $author_id ); ?>">
+                                    <div class="col">
+                                        <div class="feat-title">
+                                            <a href="<?php echo get_permalink( $recent['ID'] ); ?>" rel="bookmark" title="Link permanente a <?php echo $recent['post_title']; ?>"><h1><?php echo $recent['post_title']; ?></h1></a>
                                         </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h1 class="feat-title"><?php echo $recent['post_title']; ?></h1>
-                                        <h5 class="author-name">di <span><?php echo get_the_author_meta( 'display_name' , $author_id ); ?></span></h5>
+                                        <h5 class="author-name">di Gianni <span><?php echo get_the_author_meta( 'display_name' , $author_id ); ?></span></h5>
                                     </div>
                                 </div>
                                 <div class="row">
